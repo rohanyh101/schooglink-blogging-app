@@ -1,0 +1,82 @@
+# health check
+curl --location --request GET 'http://localhost:8080/api/v1/health' \
+ --header 'Content-Type: application/json'
+
+###
+
+############### AUTHENTICATION / AUTHORIZATION ROUTES ###############
+
+# user signup
+curl --location --request POST 'http://localhost:8080/api/v1/auth/register' \
+ --header 'Content-Type: application/json' \
+ --data-raw '{ "username": "rohan", "email": "rohan@gmail.com", "password": "1212" }'
+
+###
+
+# user login
+curl --location --request POST 'http://localhost:8080/api/v1/auth/login' \
+ --header 'Content-Type: application/json' \
+ --data-raw '{ "email": "rohan@gmail.com", "password": "1212" }'
+
+###
+
+############## USER ROUTES ################
+
+# get a single user (user profile)
+curl --location --request GET 'http://localhost:8080/api/v1/users/profile' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+# update user (update user profile)
+curl --location --request PUT 'http://localhost:8080/api/v1/users/profile' \
+ --header 'Content-Type: application/json' \
+ --data-raw '{ "username": "rohan", "password": "1212" }' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+############## BLOGPOST ROUTES ################
+
+# get all posts
+curl --location --request GET 'http://localhost:8080/api/v1/posts/' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+# get a single post
+curl --location --request GET 'http://localhost:8080/api/v1/posts/6721c014e142f671118f94da' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+# create a post
+curl --location --request POST 'http://localhost:8080/api/v1/posts' \
+ --header 'Content-Type: application/json' \
+ --data-raw '{ "title": "demo title", "content": "demo content", "description": "demo description" }' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWMzYTBiM2Q2MzQxN2I4NmI1NGU0IiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzUyNDI3fQ.-da7lwlwMjwQCMvAk2nWVD9mxX479I-nT1pBoaVHDzc'
+
+###
+
+# update a post
+curl --location --request PUT 'http://localhost:8080/api/v1/posts/6721c014e142f671118f94da' \
+ --header 'Content-Type: application/json' \
+ --data-raw '{ "title": "demo" }' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+# delete a post by id
+curl --location --request DELETE 'http://localhost:8080/api/v1/posts/6721c015e142f671118f94db' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWE2MDE2Mjg0YmM2NGU4ZThkZGRkIiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzQ1MTcxfQ.IYaEPBJZ_RNPbyuaIb2l10WG7T1cAcDEAV8yN_Jq4Z0'
+
+###
+
+# get all posts of a single user
+curl --location --request GET 'http://localhost:8080/api/v1/user/posts/' \
+ --header 'Content-Type: application/json' \
+ --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjcyMWMzYTBiM2Q2MzQxN2I4NmI1NGU0IiwidXNlcm5hbWUiOiJyb2hhbiIsImVtYWlsIjoicm9oYW5AZ21haWwuY29tIiwiZXhwIjoxNzMwMzUyNDI3fQ.-da7lwlwMjwQCMvAk2nWVD9mxX479I-nT1pBoaVHDzc'
